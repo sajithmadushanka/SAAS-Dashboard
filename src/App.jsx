@@ -15,9 +15,24 @@ import {
 import { ECommerce, Order, Employees } from "./pages";
 import { useStateContext } from "./contexts/ContextProvider";
 function App() {
-  const { activeMenu } = useStateContext();
+  const {activeMenu, currentColor, themeSettings, setThemeSettings, currentMode } = useStateContext();
   return (
+    <div className={currentMode === "Dark" ? 'dark' : ''}>
     <BrowserRouter>
+     <div className="flex relative dark:bg-main-dark-bg">
+          <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
+            <Tooltip id="Settings" content="Settings" />
+              <button data-tooltip-id="Settings"
+                type="button"
+                onClick={() => setThemeSettings(true)}
+                style={{ background: currentColor, borderRadius: '50%' }}
+                className="text-3xl text-white p-3 hover:drop-shadow-xl hover:bg-light-gray"
+              >
+                <FiSettings />
+              </button>
+
+          
+          </div>
       <div className="flex bg-main w-full h-screen dark:bg-secondary-dark">
         {/* Sidebar */}
         {activeMenu ? (
@@ -41,6 +56,8 @@ function App() {
             <Navbar />
           </div>
 
+          {themeSettings && (<ThemeSetting />)}
+          
           {/* Main Pages */}
           <div className="mt-1 p-4">
             <Routes>
@@ -55,7 +72,9 @@ function App() {
           </div>
         </div>
       </div>
+    </div>
     </BrowserRouter>
+    </div>
   );
 }
 

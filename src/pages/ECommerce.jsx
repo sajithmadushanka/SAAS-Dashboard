@@ -1,31 +1,33 @@
 import React from "react";
-import { BsCurrencyDollar } from 'react-icons/bs';
+import { BsCurrencyDollar } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
-import { IoIosMore } from 'react-icons/io';
+import { IoIosMore } from "react-icons/io";
 
 import product9 from "../data/data/product9.jpg";
-import { Stacked, Pie, Button, LineChart, SparkLine } from '../components';
+import { Stacked, Pie, Button, LineChart, SparkLine } from "../components";
 import {
   earningData,
   medicalproBranding,
   recentTransactions,
   weeklyStats,
-  dropdownData,
+
   SparklineAreaData,
   ecomPieChartData,
 } from "../data/data/dummy";
+import { useStateContext } from "../contexts/ContextProvider";
 const ECommerce = () => {
-  const currentColor = "red";
+  const {currentColor} = useStateContext();
   return (
     <div>
-      <div className="mt-2 border-2 border-red-400">
+      <div className="mt-2 h-auto bg-white dark:text-gray-200 dark:bg-secondary-dark">
         <div className="flex flex-wrap lg:flex-nowrap justify-center ">
           <div
-            className="bg-white dark:text-gray-200 dark:bg-secondary-dark h-auto rounded-xl w-full 
-                p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center"
+            className=" h-auto rounded-xl w-full 
+                p-8 pt-9 m-3 bg-center"
           >
-            <div className="flex justify-between items-center drop-shadow-2xl">
-              <div>
+            {/* ------------------ */}
+            <div className="flex justify-between items-center shadow-l ">
+              <div className="shadow-l">
                 <p className="font-bold text-gray-400 ">Earnings</p>
                 <p className="text-2xl">$55,548.72</p>
 
@@ -36,20 +38,21 @@ const ECommerce = () => {
                 >
                   <BsCurrencyDollar />
                 </button>
-                <div className="mt-6">
+                <div className="mt-6 ">
                   <Button
                     color="white"
-                    bgColor="red"
+                    bgColor={currentColor}
                     text="Download"
                     borderRadius="10px"
                   />
                 </div>
               </div>
-              <div className="flex m-3 flex-wrap justify-center gap-1 items-center">
+              <div className="flex m-3 flex-wrap justify-center gap-1 items-center ">
                 {earningData.map((item) => (
                   <div
                     key={item.title}
-                    className="bg-white h-44 dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl "
+                    className="bg-white h-44 dark:text-gray-200 dark:bg-secondary-dark md:w-56  p-4 pt-9 
+                    rounded-2xl "
                   >
                     <button
                       type="button"
@@ -74,23 +77,25 @@ const ECommerce = () => {
                 ))}
               </div>
             </div>
+
+            {/* ---------------------- */}
           </div>
         </div>
       </div>
       <div className="flex gap-10 flex-wrap justify-center">
-        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl md:w-780  ">
+        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark m-3 p-4 rounded-2xl md:w-780  ">
           <div className="flex justify-between">
             <p className="font-semibold text-xl">Revenue Updates</p>
             <div className="flex items-center gap-4">
               <p className="flex items-center gap-2 text-gray-600 hover:drop-shadow-xl">
                 <span>
-                 <GoDotFill />
+                  <GoDotFill />
                 </span>
                 <span>Expense</span>
               </p>
               <p className="flex items-center gap-2 text-green-400 hover:drop-shadow-xl">
                 <span>
-                <GoDotFill />
+                  <GoDotFill />
                 </span>
                 <span>Budget</span>
               </p>
@@ -114,7 +119,7 @@ const ECommerce = () => {
               </div>
 
               <div className="mt-5">
-                {/* <SparkLine currentColor={currentColor} id="line-sparkLine" type="Line" height="80px" width="250px" data={SparklineAreaData} color={currentColor} /> */}
+                <SparkLine  />
               </div>
               <div className="mt-10">
                 <Button
@@ -126,7 +131,7 @@ const ECommerce = () => {
               </div>
             </div>
             <div>
-              {/* <Stacked currentMode={currentMode} width="320px" height="360px" /> */}
+              <Stacked width="320px" height="360px" />
             </div>
           </div>
         </div>
@@ -147,25 +152,32 @@ const ECommerce = () => {
             </div>
 
             <div className="mt-4">
-              {/* <SparkLine currentColor={currentColor} id="column-sparkLine" height="100px" type="Column" data={SparklineAreaData} width="320" color="rgb(242, 252, 253)" /> */}
+              <SparkLine
+              
+              />
             </div>
           </div>
 
-          <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl md:w-400 p-8 m-3 flex justify-center items-center gap-10">
+          <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark rounded-2xl md:w-400 p-8 m-3 flex justify-center items-center gap-10">
             <div>
               <p className="text-2xl font-semibold ">$43,246</p>
               <p className="text-gray-400">Yearly sales</p>
             </div>
 
             <div className="w-40">
-              {/* <Pie id="pie-chart" data={ecomPieChartData} legendVisiblity={false} height="160px" /> */}
+              <Pie
+                id="pie-chart"
+                data={ecomPieChartData}
+                legendVisiblity={false}
+                height="160px"
+              />
             </div>
           </div>
         </div>
       </div>
 
       <div className="flex gap-10 m-4 flex-wrap justify-center">
-        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl">
+        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark p-6 rounded-2xl">
           <div className="flex justify-between items-center gap-2">
             <p className="text-xl font-semibold">Recent Transactions</p>
             {/* <DropDown currentMode={currentMode} /> */}
@@ -206,24 +218,26 @@ const ECommerce = () => {
             <p className="text-gray-400 text-sm">36 Recent Transactions</p>
           </div>
         </div>
-        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl w-96 md:w-760">
+        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark p-6 rounded-2xl w-96 md:w-760">
           <div className="flex justify-between items-center gap-2 mb-10">
             <p className="text-xl font-semibold">Sales Overview</p>
             {/* <DropDown currentMode={currentMode} /> */}
           </div>
-          <div className="md:w-full overflow-auto">{/* <LineChart /> */}</div>
+          <div className="md:w-full overflow-auto">
+            <LineChart />
+          </div>
         </div>
       </div>
 
       <div className="flex flex-wrap justify-center">
-        <div className="md:w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
+        <div className="md:w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark rounded-2xl p-6 m-3">
           <div className="flex justify-between">
             <p className="text-xl font-semibold">Weekly Stats</p>
             <button
               type="button"
               className="text-xl font-semibold text-gray-500"
             >
-              <IoIosMore /> 
+              <IoIosMore />
             </button>
           </div>
 
@@ -251,11 +265,11 @@ const ECommerce = () => {
               </div>
             ))}
             <div className="mt-4">
-              {/* <SparkLine currentColor={currentColor} id="area-sparkLine" height="160px" type="Area" data={SparklineAreaData} width="320" color="rgb(242, 252, 253)" /> */}
+              <SparkLine currentColor={currentColor} id="area-sparkLine" height="160px" type="Area" data={SparklineAreaData} width="320" color="rgb(242, 252, 253)" />
             </div>
           </div>
         </div>
-        <div className="w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
+        <div className="w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark rounded-2xl p-6 m-3">
           <div className="flex justify-between">
             <p className="text-xl font-semibold">MedicalPro Branding</p>
             <button
@@ -321,7 +335,7 @@ const ECommerce = () => {
             <p className="text-gray-400 text-sm">36 Recent Transactions</p>
           </div>
         </div>
-        <div className="w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
+        <div className="w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark rounded-2xl p-6 m-3">
           <div className="flex justify-between">
             <p className="text-xl font-semibold">Daily Activities</p>
             <button

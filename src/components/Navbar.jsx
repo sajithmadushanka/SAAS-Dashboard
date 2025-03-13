@@ -29,7 +29,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   );
   
 const Navbar = () => {
-  const { setActiveMenu,isClicked, handleClick, screenSize , setScreenSize} = useStateContext();
+  const { setActiveMenu,isClicked, handleClick, screenSize , setScreenSize, currentColor} = useStateContext();
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -56,7 +56,7 @@ const Navbar = () => {
           title="Menu"
           customFunc={() => setActiveMenu((prev) => !prev)}
           icon={<AiOutlineMenu />}
-          color={"blue"}
+          color={currentColor}
         />
 
         <div className="flex gap-4">
@@ -64,21 +64,21 @@ const Navbar = () => {
             title="Cart"
             customFunc={() => handleClick('cart')}
             icon={<FiShoppingCart />}
-            color="blue"
+            color={currentColor}
           />
 
           <NavButton
             title="Notification"
             customFunc={() => handleClick('notification')}
             icon={<BsChatLeft />}
-            color={"blue"}
+            color={currentColor}
             dotColor={"#03C9D7"}
           />
           <NavButton
             title="Chat"
             customFunc={() => handleClick('chat')}
             icon={<RiNotificationLine />}
-            color={"blue"}
+            color={currentColor}
             dotColor="rgb(254, 201, 15)"
           />
           {/*user profile */}

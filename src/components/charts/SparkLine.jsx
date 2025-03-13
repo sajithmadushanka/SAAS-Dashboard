@@ -1,37 +1,43 @@
-import React from 'react';
-import { SparklineComponent, Inject, SparklineTooltip } from '@syncfusion/ej2-react-charts';
+import React from "react";
+import { Line } from "react-chartjs-2";
+import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, PointElement, Tooltip } from "chart.js";
 
-class SparkLine extends React.PureComponent {
-  render() {
-    const { id, height, width, color, data, type, currentColor } = this.props;
+// Register necessary components
+ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement, Tooltip);
 
-    return (
-      <SparklineComponent
-        id={id}
-        height={height}
-        width={width}
-        lineWidth={1}
-        valueType="Numeric"
-        fill={color}
-        border={{ color: currentColor, width: 2 }}
-        tooltipSettings={{
-          visible: true,
-          // eslint-disable-next-line no-template-curly-in-string
-          format: '${x} : data ${yval}',
-          trackLineSettings: {
-            visible: true,
-          },
-        }}
-        markerSettings={{ visible: ['All'], size: 2.5, fill: currentColor }}
-        dataSource={data}
-        xName="x"
-        yName="yval"
-        type={type}
-      >
-        <Inject services={[SparklineTooltip]} />
-      </SparklineComponent>
-    );
-  }
-}
+const SparklineChart = () => {
+  const data = {
+    labels: ["", "", "", "", "", ""], // Empty labels for Sparkline effect
+    datasets: [
+      {
+        data: [10, 30, 20, 40, 35, 50], // Your data points
+        borderColor: "#4CAF50", // Line color
+        borderWidth: 2,
+        pointRadius: 0, // Hide points
+        fill: false, // No fill under line
+        tension: 0.4, // Smooth curve
+      },
+    ],
+  };
 
-export default SparkLine;
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: { display: false }, // Hide X-axis
+      y: { display: false }, // Hide Y-axis
+    },
+    plugins: {
+      legend: { display: false }, // Hide legend
+      tooltip: { enabled: false }, // Disable tooltip (optional)
+    },
+  };
+
+  return (
+    <div style={{ width: "100px", height: "30px" }}>
+      <Line data={data} options={options} />
+    </div>
+  );
+};
+
+export default SparklineChart;
