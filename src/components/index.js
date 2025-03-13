@@ -7,3 +7,5 @@ export {default as Sidebar} from './Sidebar';
 export {default as UserProfile} from './UserProfile';
 export {default as ThemeSetting} from './ThemeSetting';
 export {default as Notification} from './Notification';
+export {default as Cart} from './Cart';
+export{default as Chat} from './Chat';

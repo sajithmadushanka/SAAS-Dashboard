@@ -1,8 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 @import 'react-tooltip/dist/react-tooltip.css';
+
+
 @import "tailwindcss";
-@import "tailwindcss/preflight";
-@import "tailwindcss/utilities";
+@theme {
+  --font-display: "Open Sans", sans-serif;
+  --font-body: "Open Sans", sans-serif;
+
+  --font-size-14: 14px;
+
+  --color-main: #AFBFBF;
+  --color-main-dark: #20232A;
+  --color-secondary-dark: #33373E;
+  --color-light-gray: #F7F7F7;
+  --color-half-transparent: rgba(0, 0, 0, 0.5);
+
+  --border-width-1: 1px;
+  --border-color: rgba(0, 0, 0, 0.1);
+
+  --width-400: 400px;
+  --width-760: 760px;
+  --width-780: 780px;
+  --width-800: 800px;
+  --width-1000: 1000px;
+  --width-1200: 1200px;
+  --width-1400: 1400px;
+
+  --height-80: 80px;
+  --min-height-590: 590px;
+
+  --background-image-hero-pattern: url("https://i.ibb.co/MkvLDfb/Rectangle-4389.png");
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 body{
     margin: 0;
