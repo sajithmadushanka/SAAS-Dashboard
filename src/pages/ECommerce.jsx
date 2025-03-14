@@ -27,7 +27,7 @@ const ECommerce = () => {
           >
             {/* ------------------ */}
             <div className="flex justify-between items-center shadow-l ">
-              <div className="shadow-l">
+              <div className="shadow-lg p-6 rounded-2xl bg-white dark:bg-main-dark">
                 <p className="font-bold text-gray-400 ">Earnings</p>
                 <p className="text-2xl">$55,548.72</p>
 
@@ -47,7 +47,7 @@ const ECommerce = () => {
                   />
                 </div>
               </div>
-              <div className="flex m-3 flex-wrap justify-center gap-1 items-center ">
+              <div className="flex m-3 flex-wrap justify-center gap-1 items-center shadow-lg p-6 rounded-2xl bg-white dark:bg-main-dark ">
                 {earningData.map((item) => (
                   <div
                     key={item.title}

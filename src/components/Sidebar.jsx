@@ -1,16 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
 import { SiShopware } from "react-icons/si";
-import { MdOutlineCancel } from "react-icons/md";
-import { Tooltip } from "react-tooltip";
+// import { MdOutlineCancel } from "react-icons/md";
+// import { Tooltip } from "react-tooltip";
 import { links } from "../data/data/dummy";
 import{useStateContext} from '../contexts/ContextProvider';
-
+import { BrowserRouter } from "react-router-dom";
 const Sidebar = () => {
      const { activeMenu,setActiveMenu, screenSize , currentColor} = useStateContext();
 
-
-
-  const handleCloseSideBar = () => {
+  const handleCloseSideBar = (name) => {
+    console.log(name)
     if (activeMenu && screenSize <= 900 ) {
       setActiveMenu(false);
     }
@@ -23,15 +22,15 @@ const Sidebar = () => {
 
   
   return (
+
     <div
-      className="ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10
+      className="h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto bg-white dark:bg-main-dark drop-shadow-lg
    "
     >
       {activeMenu && (
         <>
           <div
-            className=" border-2 border-red-500 flex items-center justify-between
-        mt-4"
+            className=" flex items-center justify-between mt-4  p-4 rounded-lg shadow-lg"
           >
             <Link
               to="/"
@@ -42,11 +41,11 @@ const Sidebar = () => {
               <span>Shooso</span>
             </Link>
 
-            <button data-tooltip-id="settings-tooltip" className="block pr-2"
+            {/* <button data-tooltip-id="settings-tooltip" className="block pr-2"
             onClick={handleCloseSideBar}>
               <MdOutlineCancel />
             </button>
-            <Tooltip id="settings-tooltip" content="menu" />
+            <Tooltip id="settings-tooltip" content="menu" /> */}
           </div>
 
           {/* sidebar links ----------------------------*/}
@@ -61,7 +60,7 @@ const Sidebar = () => {
                   <NavLink
                     to={`/${link.name}`}
                     key={link.name}
-                    onClick={handleCloseSideBar}
+                    onClick={handleCloseSideBar(link.name)}
                     style={({ isActive }) => ({
                       backgroundColor: isActive ? currentColor : "",
                     })}
@@ -79,6 +78,7 @@ const Sidebar = () => {
         </>
       )}
     </div>
+
   );
 };
 
